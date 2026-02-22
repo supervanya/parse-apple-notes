@@ -12,9 +12,9 @@ Outputs a formatted briefing with NOW / SOON / REVIEW / PATTERNS sections
 
 ## Configure with env vars:
 
-`NOTE_COUNT=30 ./triage.sh` — analyze more notes
-`MODEL=opus ./triage.sh` — deeper analysis
-`MAX_NOTE_CHARS=4000 ./triage.sh` — shorter context, faster/cheaper
+- `NOTE_COUNT=30 ./triage.sh` — analyze more notes
+- `MODEL=opus ./triage.sh` — deeper analysis
+- `MAX_NOTE_CHARS=4000 ./triage.sh` — shorter context, faster/cheaper
 
 ## For daily use, add an alias to your ~/.zshrc:
 
