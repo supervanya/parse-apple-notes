@@ -20,7 +20,7 @@ fi
 
 # Step 1: Fetch note metadata
 echo "📂 Fetching notes modified in the last ${YEARS_BACK} year(s)..." >&2
-NOTES_JSON=$(osascript -l JavaScript "$SCRIPT_DIR/fetch-directory.js" "$YEARS_BACK" "$SNIPPET_LEN")
+NOTES_JSON=$(osascript -l JavaScript "$SCRIPT_DIR/directory/fetch.js" "$YEARS_BACK" "$SNIPPET_LEN")
 
 # Extract counts for display
 NOTE_COUNT=$(echo "$NOTES_JSON" | grep -o '"notesInRange": [0-9]*' | grep -o '[0-9]*')
@@ -28,7 +28,7 @@ FOLDER_COUNT=$(echo "$NOTES_JSON" | grep -o '"uniqueFolders": [0-9]*' | grep -o 
 echo "Found ${NOTE_COUNT} notes across ${FOLDER_COUNT} folders." >&2
 
 # Step 2: Build system prompt with today's date and count
-SYSTEM_PROMPT=$(sed -e "s/{DATE}/$TODAY/g" -e "s/{COUNT}/$NOTE_COUNT/g" "$SCRIPT_DIR/directory-prompt.txt")
+SYSTEM_PROMPT=$(sed -e "s/{DATE}/$TODAY/g" -e "s/{COUNT}/$NOTE_COUNT/g" "$SCRIPT_DIR/directory/prompt.txt")
 
 # Step 3: Generate directory with Claude
 echo "🧠 Generating categorized directory with Claude ($MODEL)..." >&2
