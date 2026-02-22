@@ -52,3 +52,20 @@ Show less
 ### 🔗 PATTERNS
 
 You're clearly in **Argentina/Patagonia mode** (Bariloche, El Chalten references across multiple notes). Strong focus on **movement practices** (acro yoga, hiking, climbing, parkour) and **health tracking** (back pain management, digestion, recent appendicitis recovery). **Spanish learning** is active and practical. You're balancing **remote work** with adventure travel, and there's evidence of **financial housekeeping** that needs attention (Robinhood deadline, expense settlements). The humor note suggests you're working on **social skills/personality development**.
+
+---
+
+## Generate a categorized directory of all your notes
+
+```
+./directory.sh
+```
+
+Scans all Apple Notes modified in the last 2 years, sends titles + folder names + snippets to Claude, and generates a categorized markdown directory at `directory.md`.
+
+### Configure with env vars:
+
+- `YEARS_BACK=1 ./directory.sh` — only last year
+- `MODEL=opus ./directory.sh` — deeper categorization
+- `SNIPPET_LEN=300 ./directory.sh` — more context per note for better categorization
+- `OUTPUT_FILE=~/Desktop/notes.md ./directory.sh` — custom output location
