@@ -20,6 +20,7 @@ fi
 # Step 1: Fetch notes
 echo "☀️  Fetching your ${NOTE_COUNT} most recently modified notes..." >&2
 NOTES_JSON=$(osascript -l JavaScript "$SCRIPT_DIR/fetch-notes.js" "$NOTE_COUNT" "$MAX_NOTE_CHARS")
+echo "$NOTES_JSON"
 
 # Step 2: Build system prompt with today's date
 SYSTEM_PROMPT=$(sed "s/{DATE}/$TODAY/g" "$SCRIPT_DIR/prompt.txt")
@@ -27,7 +28,6 @@ echo " System prompt: $SYSTEM_PROMPT" >&2
 
 # Step 3: Triage with Claude
 echo "🧠 Analyzing with Claude ($MODEL)..." >&2
-echo "$NOTES_JSON"
 echo "$NOTES_JSON" | claude -p \
   --model "$MODEL" \
   --system-prompt "$SYSTEM_PROMPT" \

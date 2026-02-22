@@ -48,11 +48,12 @@ function run(argv) {
 
     var truncated = false;
     if (content.length > maxChars) {
+      var halfBudget = Math.floor(maxChars / 2);
+      var skipped = content.length - maxChars;
       content =
-        content.substring(0, maxChars) +
-        "\n[... truncated from " +
-        n.text.length +
-        " chars]";
+        content.substring(0, halfBudget) +
+        "\n\n[... " + skipped + " chars skipped ...]\n\n" +
+        content.substring(content.length - halfBudget);
       truncated = true;
     }
 
